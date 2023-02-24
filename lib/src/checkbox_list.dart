@@ -26,19 +26,19 @@ class CheckboxList<T> extends PanelComponent
     return ret;
   }
 
-  set value(List<T> value) {
-    if (value.isEmpty) {
-      checkboxes.forEach((rb) {
-        rb.checked = false;
-      });
+  set value(List<T> newValue) {
+    checkboxes.forEach((rb) {
+      rb.checked = false;
+    });
+    if (newValue.isEmpty) {
       return;
     }
     for (var i = 0; i < optionList.length; i++) {
-      if (optionList[i] == value) {
+      final option = optionList[i];
+      if (newValue.contains(option)) {
         checkboxes[i].checked = true;
       }
     }
-    return;
   }
 
   @override
